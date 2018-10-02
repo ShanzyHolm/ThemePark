@@ -1,3 +1,5 @@
+package Rides;
+
 public abstract class Ride {
     protected String name;
     protected int price;
