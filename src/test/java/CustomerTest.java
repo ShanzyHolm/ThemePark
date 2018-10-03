@@ -1,3 +1,4 @@
+import Customers.Customer;
 import org.junit.Before;
 import org.junit.Test;
 
