@@ -17,7 +17,7 @@ public class RollercoasterTest {
     public void setUp() throws Exception {
         rollercoaster = new Rollercoaster("Mouse Chaser", 2.00, 2, 1.2, "slow");
         rollercoaster1 = new Rollercoaster("Lazer Pointer", 3.50, 4, 1.4, "fast");
-        customer1 = new Customer("Joey", 10, 1.1, 5.50);
+        customer1 = new Customer("Joey", 10, 1.2, 5.50);
         customer2 = new Customer("Monica", 15, 1.4, 10.00);
         customer3 = new Customer("Ross", 7, 0.9, 8.00);
     }
@@ -55,9 +55,9 @@ public class RollercoasterTest {
 
     @Test
     public void canGetNumberOfRiders() {
-        rollercoaster1.ride(customer1);
         rollercoaster1.ride(customer2);
-        rollercoaster1.ride(customer3);
+        rollercoaster1.ride(customer2);
+        rollercoaster1.ride(customer2);
         assertEquals(3, rollercoaster1.getNumberOfRiders());
     }
 
@@ -65,22 +65,22 @@ public class RollercoasterTest {
     public void canNotRideIfFull() {
         rollercoaster.ride(customer1);
         rollercoaster.ride(customer2);
-        rollercoaster.ride(customer3);
+        rollercoaster.ride(customer2);
         assertEquals(2, rollercoaster.getNumberOfRiders());
     }
 
 
+    @Test
+    public void canNotRideIfTooShort() {
+        rollercoaster.ride(customer3);
+        assertEquals(0, rollercoaster.getNumberOfRiders());
+    }
 
-
-
-    //    @Test
-//    public void canNotRideIfTooShort() {
-//
-//    }
-//
-//    @Test
-//    public void canRideIfTallEnough() {
-//    }
+    @Test
+    public void canRideIfTallEnough() {
+        rollercoaster.ride(customer2);
+        assertEquals(1, rollercoaster.getNumberOfRiders());
+    }
 //
 //    @Test
 //    public void canRideIfPaid() {

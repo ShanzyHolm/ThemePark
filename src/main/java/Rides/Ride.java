@@ -45,7 +45,9 @@ public abstract class Ride implements Rideable {
 
     public void ride(Customer customer){
         if (!rideIsFull()){
+            if (customer.getHeightInMetres() >= getMinimumHeight() )
             this.riders.add(customer);
         }
     }
+
 }
